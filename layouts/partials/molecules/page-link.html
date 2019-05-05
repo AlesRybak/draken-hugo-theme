@@ -1,0 +1,14 @@
+<div class="column is-2-desktop is-3-tablet is-6-mobile">
+    <a href="{{ .Permalink }}">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-2by1">
+                    <img src='{{ partial "atoms/page-thumb" (dict "page" . "thumbType" "h") }}' alt="{{ .Title }}">
+                </figure>
+            </div>
+            <div class="card-content">
+                <h4 class="title is-6">{{ .Title }}</h4>
+            </div>
+        </div>
+    </a>
+</div>

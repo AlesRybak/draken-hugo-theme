@@ -1,0 +1,11 @@
+{{- $thumb := replace .avatar "upload" "images" -}}
+{{- $thumb := replace $thumb "." "_a." -}}
+
+<div>
+    <div>
+        <img src="{{ $thumb }}" class="avatar" alt="{{ .name }}" />
+    </div>
+    <div>
+        {{ .name }}
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{{ $file := .Get "file" }}
+{{ $list := index .Site.Data.resultsLinks $file }}
+{{ $length := len $list }}
+
+<div class="container">
+    <div class="columns is-multiline">
+        {{ range $list }}
+            <div class='column {{ partial "misc/draken-box-link-class" (dict "length" $length) }}'>
+                <div class="card">
+                    <div class="card-content has-text-centered">
+                        <strong>{{ .title }}</strong>
+                    </div>
+                    <div class="card-footer">
+                        {{ if isset . "planUrl" }}
+                            <a class="card-footer-item" href="{{ .planUrl }}">Rozpis</a>
+                        {{ end }}
+                        <a class="card-footer-item" href="{{ .resultsUrl }}">Výsledky</a>
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>

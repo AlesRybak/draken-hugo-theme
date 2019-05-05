@@ -1,0 +1,38 @@
+{{ define "banner" }}
+<!-- No banner -->
+{{ end }}
+
+{{ define "main" }}
+
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <h2 class="title">{{ .Title }}</h2>
+        </div>
+    </div>
+    {{ range .Data.Pages }}
+        <div class="columns">
+            <div class="column is-2 has-text-centered">
+                <figure class="image is-64x64">
+                    <img src="/images/authors/{{ .Params.Author }}.jpg" />
+                </figure>
+                <strong>{{ index .Site.Data.authors ( default "none" .Params.Author ) }}</strong>
+                <br/>
+                <em>{{ dateFormat "2.1.2006" .Date }}</em>
+            </div>
+            <div class="column is-8">
+                <h2 class="subtitle">{{ .Title }}</h2>
+                <div>
+                    {{ .Summary }}
+                </div>
+            </div>
+            <div class="column is-2">
+                tags
+                categories
+            </div>
+        </div>
+        qwerty
+    {{ end }}
+</div>
+
+{{ end }}

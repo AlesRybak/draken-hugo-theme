@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Draken</title>
+        <meta charset="utf-8" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="/styles.css"/>
+    </head>
+    <body>
+        <section id="navigation">
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav-left">
+                        <a href="/" class="nav-item">
+                            <img src="/images/draken_logo.png" alt="Draken"/>
+                        </a>
+                    </div>
+
+                    <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+                    <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+                    <span class="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <!-- This "nav-menu" is hidden on mobile -->
+                    <!-- Add the modifier "is-active" to display it on mobile -->
+                    <div class="nav-right nav-menu">
+                        {{ $currentPage := . }}
+                        {{ range .Site.Menus.main }}
+                            <a class='nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}' href='{{ .URL }}'>{{ .Name }}</a>
+                        {{ end }}
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+        {{ block "banner" . }}
+        {{ end }}
+
+        {{ block "main" . }}
+        <section id="main-content" class="section">
+            <div class="news">
+                <div class="container">
+                    <h3 class="title is-4">Novinky</h3>
+                    <div class="columns">
+                        {{ range first 8 .Data.Pages }}
+                            {{ partial "molecules/page-link-full" . }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{ end }}
+
+        <section id="footer">
+            <div class="footer">
+                <div class="container has-text-centered">
+                    <p class="copyright">Copyright &copy; 2006-{{ .Site.LastChange.Year }} Draken Brno</p>
+                </div>
+                <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+            </div>
+        </section>
+
+        <script src="/app.js"></script>
+    </body>
+</html>

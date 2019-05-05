@@ -1,0 +1,10 @@
+{{ $page := . }}
+{{ $site := .Site }}
+
+<ul>
+{{ range .Site.Menus.main }}
+    {{ $is := $page.IsMenuCurrent "main" . }}
+    {{ $has := $page.HasMenuCurrent "main" . }}
+    <li>{{ .Name }}</li>
+{{ end }}
+</ul>
